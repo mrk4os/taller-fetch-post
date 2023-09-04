@@ -24,8 +24,29 @@ document.getElementById('registroForm').addEventListener('submit', e => {
         .then(response => response.json())
         .then(data => {
             console.log('Respuesta del servidor:', data);
+            infoDisplay.innerHTML = `
+            <h1> Respuesta del servidor: </h3>
+            <p><strong>Nombre:</strong> ${user.nombre}</p>
+            <p><strong>Apellido:</strong> ${user.apellido}</p>
+            <p><strong>Fecha de nacimiento:</strong> ${user.fecha_nacimiento}</p>
+            <button type="button" name="Limpiar" onclick="cleanResults()">Limpiar</button>`
+
         })
         .catch(error => {
             console.error('Error:', error);
         });
+
+    cleanForm();
 });
+
+function cleanForm() {
+    document.getElementById('nombre').value = '';
+    document.getElementById('apellido').value = '';
+    document.getElementById('happy_birthday').value = '';
+}
+
+function cleanResults() {
+    infoDisplay.innerHTML = '';
+}
+
+
