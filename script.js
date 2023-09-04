@@ -7,7 +7,7 @@ document.getElementById('registroForm').addEventListener('submit', e => {
     const fechaNacimiento = document.getElementById('happy_birthday').value;
 
     // Crear un objeto con los datos del formulario
-    const formData = {
+    const user = {
         nombre,
         apellido,
         fecha_nacimiento: fechaNacimiento
@@ -19,7 +19,7 @@ document.getElementById('registroForm').addEventListener('submit', e => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(user)
     })
         .then(response => response.json())
         .then(data => {
